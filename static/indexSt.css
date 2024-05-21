@@ -1,0 +1,38 @@
+.div_principal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;   
+}
+.div_pokemon img{
+    width: 200px;
+    
+}
+.div_botones button {
+    background-color:white;
+    border: 2px solid #5f0cbe;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+}
+.div_botones button:hover {
+    background-color: #5f0cbe;
+    color: white;
+}
+@keyframes tambaleo {
+    0%, 15%, 35%, 55%, 75%, 100% { transform: translateX(0); }
+    10%,30%, 50%, 70%, 90% { transform: translateX(-10px); }
+    20%, 40%, 60%, 80% { transform: translateX(10px); } 
+}
+@keyframes parpadeo {
+    0%, 20%, 40%, 60%, 80% { opacity: 1; }
+    10%, 30%, 50%, 70%, 90% { opacity: 0; }
+}
+.parpadeo-gif {
+    animation: tambaleo 500ms ease-in-out forwards, parpadeo 700ms 800ms infinite;
+}
