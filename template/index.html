@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pokemon</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">    
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='indexSt.css')}}">
+        <script src="{{ url_for('static', filename='indexJs.js') }}"></script>
+    </head>
+    <body>
+        <div class="div_principal">
+            <div class="div_pokemon">
+                <img id="pokemon-gif" src="{{ url_for('static', filename='img/Bulbasaur.gif') }}" alt="bulbasaur">    
+            </div>
+            <div class="div_botones">
+                <button class="atacar-btn">Atacar</button>
+                <button class="damage-btn">Daño</button>
+            </div>
+        </div>
+    </body>
+</html>
