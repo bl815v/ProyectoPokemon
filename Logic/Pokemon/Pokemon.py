@@ -2,7 +2,8 @@ from abc import ABC
 import random
 
 class Pokemon(ABC):
-    def __init__(self, nombre, vida, ataque, defensa, debilidad, resistencia):
+    def __init__(self, tipo, nombre, vida, ataque, defensa, debilidad, resistencia):
+        self._tipo = tipo
         self._nombre = nombre
         self._vida = vida
         self._ataque = ataque
@@ -10,6 +11,12 @@ class Pokemon(ABC):
         self._debilidad = debilidad
         self._resitencia = resistencia
     
+    def getTipo(self):
+        return self._tipo
+    
+    def setTipo(self,tipo):
+        self._tipo = tipo
+
     def getNombre(self):
         return self._nombre
     
