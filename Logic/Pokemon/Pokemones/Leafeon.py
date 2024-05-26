@@ -1,4 +1,4 @@
-from Logic.Pokemon.Tipos import PokemonPlanta
+from Logic.Pokemon.Tipos.PokemonPlanta import PokemonPlanta
 
 class Leafeon(PokemonPlanta):
     def __init__(self, tipo, nombre, vida, ataque, defensa, debilidad, resistencia):
@@ -9,4 +9,4 @@ class Leafeon(PokemonPlanta):
         self._ataque = 100
         self._defensa = 120
         self._debilidad = ["Fuego", "Bicho"]
-        self._resitencia = ["Agua", "Planta", "Electrico"]
+        self._resistencia = ["Agua", "Planta", "Electrico"]

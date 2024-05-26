@@ -1,4 +1,4 @@
-from Logic.Pokemon.Tipos import PokemonBicho
+from Logic.Pokemon.Tipos.PokemonBicho import PokemonBicho
 
 class Butterfree(PokemonBicho):
     def __init__(self, tipo, nombre, vida, ataque, defensa, debilidad, resistencia):
@@ -9,4 +9,4 @@ class Butterfree(PokemonBicho):
         self._ataque = 45
         self._defensa = 50
         self._debilidad = ["Fuego"]
-        self._resitencia = ["Bicho", "Planta"]
+        self._resistencia = ["Bicho", "Planta"]

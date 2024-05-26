@@ -1,4 +1,4 @@
-from Logic.Pokemon.Tipos import PokemonPlanta
+from Logic.Pokemon.Tipos.PokemonPlanta import PokemonPlanta
 
 class Bulbasaur(PokemonPlanta):
     def __init__(self, tipo, nombre, vida, ataque, defensa, debilidad, resistencia):
@@ -9,4 +9,4 @@ class Bulbasaur(PokemonPlanta):
         self._ataque = 50
         self._defensa = 50
         self._debilidad = ["Fuego"]
-        self._resitencia = ["Agua", "Planta", "Electrico"]
+        self._resistencia = ["Agua", "Planta", "Electrico"]

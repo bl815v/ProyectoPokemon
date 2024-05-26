@@ -1,4 +1,4 @@
-from Logic.Mochila import Objetos
+from Logic.Mochila.Objetos import Objetos
 
 class Eter(Objetos):
     def __init__(self, nombre, PS, PP, ataque, defensa, cantidad):

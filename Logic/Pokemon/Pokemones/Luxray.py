@@ -1,4 +1,4 @@
-from Logic.Pokemon.Tipos import PokemonElectrico
+from Logic.Pokemon.Tipos.PokemonElectrico import PokemonElectrico
 
 class Luxray(PokemonElectrico):
     def __init__(self, tipo, nombre, vida, ataque, defensa, debilidad, resistencia):
@@ -9,4 +9,4 @@ class Luxray(PokemonElectrico):
         self._ataque = 110
         self._defensa = 75
         self._debilidad = ["Roca"]
-        self._resitencia = ["Electrico"]
+        self._resistencia = ["Electrico"]

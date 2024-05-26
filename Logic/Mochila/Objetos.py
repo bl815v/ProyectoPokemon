@@ -1,7 +1,7 @@
 from abc import ABC
 
 class Objetos(ABC):
-    def __init__(self,nombre, PS, PP, ataque, defensa, cantidad):
+    def __init__(self, nombre, PS, PP, ataque, defensa, cantidad):
         self._nombre = nombre
         self._PS = PS
         self._PP = PP
@@ -44,3 +44,7 @@ class Objetos(ABC):
     
     def setCantidad(self, cantidad):
         self._cantidad = cantidad
+
+    def getPropiedades(self):
+        return (self._nombre, self._PS, self._PP, self._ataque, self._defensa, self._cantidad)
+        

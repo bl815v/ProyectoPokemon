@@ -1,4 +1,4 @@
-from Logic.Pokemon.Tipos import PokemonRoca
+from Logic.Pokemon.Tipos.PokemonRoca import PokemonRoca
 
 class Onix(PokemonRoca):
     def __init__(self, tipo, nombre, vida, ataque, defensa, debilidad, resistencia):
@@ -9,4 +9,4 @@ class Onix(PokemonRoca):
         self._ataque = 50
         self._defensa = 140
         self._debilidad = ["Agua", "Planta"]
-        self._resitencia = ["Fuego"]
+        self._resistencia = ["Fuego"]

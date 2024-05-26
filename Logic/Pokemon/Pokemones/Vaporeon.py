@@ -1,4 +1,4 @@
-from Logic.Pokemon.Tipos import PokemonAgua
+from Logic.Pokemon.Tipos.PokemonAgua import PokemonAgua
 
 class Vaporeon(PokemonAgua):
     def __init__(self, tipo, nombre, vida, ataque, defensa, debilidad, resistencia):
@@ -9,4 +9,4 @@ class Vaporeon(PokemonAgua):
         self._ataque = 63
         self._defensa = 60
         self._debilidad = ["Electrico", "Planta"]
-        self._resitencia = ["Agua", "Fuego"]
+        self._resistencia = ["Agua", "Fuego"]

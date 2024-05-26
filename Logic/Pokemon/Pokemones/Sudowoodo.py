@@ -1,4 +1,4 @@
-from Logic.Pokemon.Tipos import PokemonRoca
+from Logic.Pokemon.Tipos.PokemonRoca import PokemonRoca
 
 class Sudowoodo(PokemonRoca):
     def __init__(self, tipo, nombre, vida, ataque, defensa, debilidad, resistencia):
@@ -9,4 +9,4 @@ class Sudowoodo(PokemonRoca):
         self._ataque = 90
         self._defensa = 100
         self._debilidad = ["Agua", "Planta"]
-        self._resitencia = ["Electrico", "Fuego"]
+        self._resistencia = ["Electrico", "Fuego"]

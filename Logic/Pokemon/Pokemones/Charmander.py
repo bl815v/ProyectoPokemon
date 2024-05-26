@@ -1,4 +1,4 @@
-from Logic.Pokemon.Tipos import PokemonFuego
+from Logic.Pokemon.Tipos.PokemonFuego import PokemonFuego
 
 class Charmander(PokemonFuego):
     def __init__(self, tipo, nombre, vida, ataque, defensa, debilidad, resistencia):
@@ -9,4 +9,4 @@ class Charmander(PokemonFuego):
         self._ataque = 50
         self._defensa = 40
         self._debilidad = ["Agua"]
-        self._resitencia = ["Planta", "Fuego"]
+        self._resistencia = ["Planta", "Fuego"]

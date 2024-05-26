@@ -1,4 +1,4 @@
-from Logic.Pokemon.Tipos import PokemonFuego
+from Logic.Pokemon.Tipos.PokemonFuego import PokemonFuego
 
 class Monferno(PokemonFuego):
     def __init__(self, tipo, nombre, vida, ataque, defensa, debilidad, resistencia):
@@ -9,4 +9,4 @@ class Monferno(PokemonFuego):
         self._ataque = 75
         self._defensa = 50
         self._debilidad = ["Agua"]
-        self._resitencia = ["Planta", "Fuego", "Bicho"]
+        self._resistencia = ["Planta", "Fuego", "Bicho"]

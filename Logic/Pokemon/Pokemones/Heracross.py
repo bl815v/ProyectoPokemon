@@ -1,4 +1,4 @@
-from Logic.Pokemon.Tipos import PokemonBicho
+from Logic.Pokemon.Tipos.PokemonBicho import PokemonBicho
 
 class Heracross(PokemonBicho):
     def __init__(self, tipo, nombre, vida, ataque, defensa, debilidad, resistencia):
@@ -9,4 +9,4 @@ class Heracross(PokemonBicho):
         self._ataque = 110
         self._defensa = 70
         self._debilidad = ["Fuego"]
-        self._resitencia = ["Bicho", "Planta"]
+        self._resistencia = ["Bicho", "Planta"]
