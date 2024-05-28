@@ -7,7 +7,11 @@ from Logic.Mochila.Proteina import Proteina
 
 class DiccionarioObjetos():
 
-    def DiccionarioDeObjetos(self):
+    def DiccionarioDeObjetos(self, NombreObjeto, TipoEstadistica):
+        self.objA = DiccionarioObjetos.IdentificarObjeto(NombreObjeto)
+        self.objB = 1
+        self.objC = DiccionarioObjetos.IdentificarEstadistica(TipoEstadistica)
+
         self.BolaLodo1 = BolaLodo(0,0,0,0,0,0)
         self.Eter1 = Eter(0,0,0,0,0,0)
         self.Hierro1 = Hierro(0,0,0,0,0,0)
@@ -24,4 +28,49 @@ class DiccionarioObjetos():
                         "Proteina": self.Proteina1.getPropiedades()
                         }
         
-        return list(self.Objetos.values())
+        #Esta parte devuelve los datos que se requirieron especificamente en el constructor
+        self.ListaObjetos = list(self.Objetos.items())
+        self.ListaPropiedades = list(self.ListaObjetos[self.objA][self.objB])
+        if self.objA>=0 and self.objA<=5:
+            if self.objB==0:
+                return self.ListaObjetos[self.objA][self.objB]
+            elif self.objB==1:
+                if self.objC>=0 and self.objC <= 5:
+                    return self.ListaPropiedades[self.objC]
+                else:
+                    return self.ListaPropiedades
+        else:
+            return list(self.Objetos.values())
+    
+
+    def IdentificarObjeto(objeto):
+        if objeto == "BolaLodo":
+            return 0
+        elif objeto == "Eter":
+            return 1
+        elif objeto == "Hierro":
+            return 2
+        elif objeto == "HuesoRaro":
+            return 3
+        elif objeto == "Pocion":
+            return 4
+        elif objeto == "Proteina":
+            return 5
+        else:
+            return 6
+    
+    def IdentificarEstadistica(Estat):
+        if Estat == "Nombre":
+            return 0
+        elif Estat == "PS":
+            return 1
+        elif Estat == "PP":
+            return 2
+        elif Estat == "Ataque":
+            return 3
+        elif Estat == "Defensa":
+            return 4
+        elif Estat == "Cantidad":
+            return 5
+        elif Estat == "Todo":
+            return 6

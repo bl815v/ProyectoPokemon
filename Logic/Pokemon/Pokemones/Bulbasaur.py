@@ -1,4 +1,5 @@
 from Logic.Pokemon.Tipos.PokemonPlanta import PokemonPlanta
+from Logic.Movimientos.ListaMovimiento import ListaMovimiento
 
 class Bulbasaur(PokemonPlanta):
     def __init__(self, tipo, nombre, vida, ataque, defensa, debilidad, resistencia):
