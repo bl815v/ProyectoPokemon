@@ -57,9 +57,6 @@ class Pokemon(ABC):
         numero_aleatorio = random.uniform(0.85, 1.0)
         resultado = (((((2*50)/5)+2 * potenciaAtaque * (ataquePropio/defensaRival)) / 50) + 2)
         return resultado * numero_aleatorio
-    
-    def UsarObjeto(self, PS, PP, ataque, defensa):
-        pass
 
     def getPropiedades(self):
         return (self._nombre, self._tipo, self._vida, self._ataque, self._defensa, self._debilidad, self._resistencia)

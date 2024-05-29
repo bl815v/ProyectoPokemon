@@ -41,9 +41,36 @@ class DiccionarioPokemon():
                         "Vaporeon": self.Vaporeon1.getPropiedades()
                         }
 
-    def DiccionarioDePokemon(self, NombreObjeto, TipoEstadistica):
+    def DiccionarioDePokemon(self, NombrePokemon, TipoEstadistica):
         #12 pokemones
-        self.pokA = DiccionarioPokemon.IdentificarPokemon(NombreObjeto)
+        self.Bulbasaur1 = Bulbasaur(0,0,0,0,0,0,0)
+        self.Butterfree1 = Butterfree(0,0,0,0,0,0,0)
+        self.Charmander1 = Charmander(0,0,0,0,0,0,0)
+        self.Heracross1 = Heracross(0,0,0,0,0,0,0)
+        self.Leafeon1 = Leafeon(0,0,0,0,0,0,0)
+        self.Luxray1 = Luxray(0,0,0,0,0,0,0)
+        self.Monferno1 = Monferno(0,0,0,0,0,0,0)
+        self.Onix1 = Onix(0,0,0,0,0,0,0)
+        self.Pikachu1 = Pikachu(0,0,0,0,0,0,0)
+        self.Squirtle1 = Squirtle(0,0,0,0,0,0,0)
+        self.Sudowoodo1 = Sudowoodo(0,0,0,0,0,0,0)
+        self.Vaporeon1 = Vaporeon(0,0,0,0,0,0,0)
+        self.Pokemones = {
+                        "Bulbasaur": self.Bulbasaur1.getPropiedades(),
+                        "Butterfree": self.Butterfree1.getPropiedades(),
+                        "Charmander": self.Charmander1.getPropiedades(),
+                        "Heracross": self.Heracross1.getPropiedades(),
+                        "Leafeon": self.Leafeon1.getPropiedades(),
+                        "Luxray": self.Luxray1.getPropiedades(),
+                        "Monferno": self.Monferno1.getPropiedades(),
+                        "Onix": self.Onix1.getPropiedades(),
+                        "Pikachu": self.Pikachu1.getPropiedades(),
+                        "Squirtle": self.Squirtle1.getPropiedades(),
+                        "Sudowoodo": self.Sudowoodo1.getPropiedades(),
+                        "Vaporeon": self.Vaporeon1.getPropiedades()
+                        }
+    
+        self.pokA = DiccionarioPokemon.IdentificarPokemon(NombrePokemon)
         self.pokB = 1
         self.pokC = DiccionarioPokemon.IdentificarEstadistica(TipoEstadistica)
         

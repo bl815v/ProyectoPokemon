@@ -41,7 +41,7 @@ class DiccionarioObjetos():
                 else:
                     return self.ListaPropiedades
         else:
-            return list(self.Objetos.items())
+            return list(self.Objetos.values())
     
 
     def IdentificarObjeto(objeto):
