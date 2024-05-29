@@ -13,12 +13,7 @@ from Logic.Pokemon.Pokemones.Vaporeon import Vaporeon
 
 class DiccionarioPokemon():
 
-    def DiccionarioDePokemon(self, NombreObjeto, TipoEstadistica):
-        #12 pokemones
-        self.pokA = DiccionarioPokemon.IdentificarPokemon(NombreObjeto)
-        self.pokB = 1
-        self.pokC = DiccionarioPokemon.IdentificarEstadistica(TipoEstadistica)
-
+    def __init__(self):
         self.Bulbasaur1 = Bulbasaur(0,0,0,0,0,0,0)
         self.Butterfree1 = Butterfree(0,0,0,0,0,0,0)
         self.Charmander1 = Charmander(0,0,0,0,0,0,0)
@@ -31,7 +26,6 @@ class DiccionarioPokemon():
         self.Squirtle1 = Squirtle(0,0,0,0,0,0,0)
         self.Sudowoodo1 = Sudowoodo(0,0,0,0,0,0,0)
         self.Vaporeon1 = Vaporeon(0,0,0,0,0,0,0)
-
         self.Pokemones = {
                         "Bulbasaur": self.Bulbasaur1.getPropiedades(),
                         "Butterfree": self.Butterfree1.getPropiedades(),
@@ -46,6 +40,12 @@ class DiccionarioPokemon():
                         "Sudowoodo": self.Sudowoodo1.getPropiedades(),
                         "Vaporeon": self.Vaporeon1.getPropiedades()
                         }
+
+    def DiccionarioDePokemon(self, NombreObjeto, TipoEstadistica):
+        #12 pokemones
+        self.pokA = DiccionarioPokemon.IdentificarPokemon(NombreObjeto)
+        self.pokB = 1
+        self.pokC = DiccionarioPokemon.IdentificarEstadistica(TipoEstadistica)
         
         #Esta parte devuelve los datos que se requirieron especificamente en el constructor
         self.ListaPokemones = list(self.Pokemones.items())
@@ -106,4 +106,6 @@ class DiccionarioPokemon():
             return 6
         elif Estat == "Todo":
             return 7
-        
+
+    def getPokemones(self):
+       return list(self.Pokemones.values())

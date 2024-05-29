@@ -31,6 +31,7 @@ class DiccionarioObjetos():
         #Esta parte devuelve los datos que se requirieron especificamente en el constructor
         self.ListaObjetos = list(self.Objetos.items())
         self.ListaPropiedades = list(self.ListaObjetos[self.objA][self.objB])
+        
         if self.objA>=0 and self.objA<=5:
             if self.objB==0:
                 return self.ListaObjetos[self.objA][self.objB]
@@ -40,7 +41,7 @@ class DiccionarioObjetos():
                 else:
                     return self.ListaPropiedades
         else:
-            return list(self.Objetos.values())
+            return list(self.Objetos.items())
     
 
     def IdentificarObjeto(objeto):
