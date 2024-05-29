@@ -7,8 +7,20 @@ import random
 class Juego():
     def __init__(self):
         self.diccionario = DiccionarioObjetos()
-        self.objetosUser = self.diccionario.DiccionarioDeObjetos() #se crean los objetos del usuario
-        self.objetosPc = self.diccionario.DiccionarioDeObjetos() #se crean los objetos del pc
+        self.objetosUser = [self.diccionario.DiccionarioDeObjetos("BolaLodo","Todo"),
+                            self.diccionario.DiccionarioDeObjetos("Eter","Todo"),
+                            self.diccionario.DiccionarioDeObjetos("Hierro","Todo"),
+                            self.diccionario.DiccionarioDeObjetos("HuesoRaro","Todo"),
+                            self.diccionario.DiccionarioDeObjetos("Pocion","Todo"),
+                            self.diccionario.DiccionarioDeObjetos("Proteina","Todo")] #se crean los objetos del usuario
+        
+        self.objetosPc = [self.diccionario.DiccionarioDeObjetos("BolaLodo","Todo"),
+                            self.diccionario.DiccionarioDeObjetos("Eter","Todo"),
+                            self.diccionario.DiccionarioDeObjetos("Hierro","Todo"),
+                            self.diccionario.DiccionarioDeObjetos("HuesoRaro","Todo"),
+                            self.diccionario.DiccionarioDeObjetos("Pocion","Todo"),
+                            self.diccionario.DiccionarioDeObjetos("Proteina","Todo")] #se crean los objetos del pc
+
         self.objetoElegido = None
 
 
@@ -21,8 +33,8 @@ class Juego():
                 break
         
         diccionario = DiccionarioPokemon()
-        self._pokemon_pc= diccionario.DiccionarioDePokemon()[numero1]
-        self._pokemon_user=diccionario.DiccionarioDePokemon()[numero2]
+        self._pokemon_pc= diccionario.getPokemones()[numero1]
+        self._pokemon_user=diccionario.getPokemones()[numero2]
 
         self.vidaPokemonPc = self._pokemon_pc[2]
         self.vidaTotalPc = self.vidaPokemonPc #se define vida total para asegurar que los objetos no pongan mas vida que la maxima posible
@@ -39,9 +51,10 @@ class Juego():
         movimiento[3] += aumento #aumenta el pp al movimiento
 
 
-    def UsarObjetoUsuario(self,objetoElegido):        
-        self.objeto = self.objetosUser[objetoElegido]
-        self.objetosUser[objetoElegido][5] -= 1 #resta en uno a la cantidad del objeto elegido
+    def UsarObjetoUsuario(self,objetoElegido):
+        posicion = self.diccionario.IdentificarObjeto(objetoElegido) #se le pasa el nombre del objeto que eligio el usuario    
+        self.objeto = self.objetosUser[posicion]
+        self.objetosUser[posicion][5] -= 1 #resta en uno a la cantidad del objeto elegido
         
         if(self.getVidaPokemon_user() + self.objeto[1] < self.vidaTotalUser): #hace que el pokemon no sobrepase la vida maxima con la que inicia
             self.setVidaPokemon_user(self.getVidaPokemon_user() + self.objeto[1])
