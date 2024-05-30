@@ -74,15 +74,18 @@ class Juego():
             if elemento == self._pokemon_user[1]:
                 self.comprobaciondañoUser = 0.5
 
-    def AumentarPpMovimiento(self, movimiento, aumento):
-        movimiento[4] += aumento #aumenta el pp al movimiento
+    def AumentarPpMovimiento(self, quien, movimiento, aumento):
+        if quien == 1:
+            self.movimientosPokemonUser[movimiento][4] + aumento #aumenta el pp al movimiento del usuario
+        elif quien == 0:
+            self.movimientosPokemonPc[movimiento][4] + aumento #aumenta el pp al movimiento del pc
 
-    def UsarObjetoUsuario(self,objeto,movimiento): #movimiento si quiere aumentar el pp de un movimiento si no sera 0 
+    def UsarObjetoUsuario(self,objeto, movimiento): #movimiento si quiere aumentar el pp de un movimiento, del 0 al 3
         objetoElegido = self.diccionario.DiccionarioDeObjetos(objeto,"Todo")
         while(objetoElegido[5] == 0): #hace que no se pudean elegir objetos agotados
-            return("El objeto elegido no tiene puntos disponibles, elige un objeto diferente") 
+            return("El objeto elegido no esta disponible, elige un objeto diferente") 
         
-        posicion = self.diccionario.IdentificarObjeto(objetoElegido) #se le pasa el nombre del objeto que eligio el usuario    
+        posicion = DiccionarioObjetos.IdentificarObjeto(objetoElegido[0]) #se le pasa el nombre del objeto que eligio el usuario    
         self.objeto = self.objetosUser[posicion]
         self.objetosUser[posicion][5] -= 1 #resta en uno a la cantidad del objeto elegido
         
@@ -91,7 +94,7 @@ class Juego():
         else:
              self.setVidaPokemon_user(self.vidaTotalUser)
 
-        self.AumentarPpMovimiento(self.movimientosPokemonUser[movimiento],self.objeto[2]) #aumenta el pp de un movimiento
+        self.AumentarPpMovimiento(1, movimiento, self.objeto[2]) #aumenta el pp de un movimiento
 
         if(self.objeto[3] > 0): 
             self.setAtaquePokemon_user(self.getAtaquePokemon_user() + self.objeto[3]) #aumenta el ataque del pokemon
@@ -101,7 +104,7 @@ class Juego():
             self.setDefensaPokemon_user(self.getDefensaPokemon_user() + self.objeto[4]) #aumenta la defensa del pokemon
         else:
             self.setDefensaPokemon_pc(self.getDefensaPokemon_pc() + self.objeto[4])
-        return(self._pokemon_user[0] + "ha usado" + self.objeto[0])
+        return(self._pokemon_user[0] + " ha usado " + self.objeto[0])
     
     def UsarObjetoPc(self):  
         movimiento =  random.randint(0,3) #elige un movimiento aleatorio para aumentarle el pp
@@ -113,7 +116,7 @@ class Juego():
         else:
              self.setVidaPokemon_pc(self.vidaTotalPc)
 
-        self.AumentarPpMovimiento(self.movimientosPokemonPc[movimiento],self.objeto[2])
+        self.AumentarPpMovimiento(0, movimiento,self.objeto[2])
 
         if(self.objeto[3] > 0):
             self.setAtaquepokemon_pc(self.getAtaquePokemon_pc() + self.objeto[3])
@@ -123,7 +126,7 @@ class Juego():
             self.setDefensaPokemon_pc(self.getDefensaPokemon_pc() + self.objeto[4])
         else:
             self.setDefensaPokemon_user(self.getDefensaPokemon_user() + self.objeto[4])
-        return(self._pokemon_pc[0] + "ha usado" + self.objeto[0])
+        return(self._pokemon_pc[0] + " ha usado " + self.objeto[0])
     
     def realizarAtaqueUsuario(self,ataque): #ataque es la posicion del movimiento elegido, si eligio el primer movimiento la posicion sera 0
         ataqueElegido = self.MovimientosPokemonUser[ataque]
@@ -133,22 +136,23 @@ class Juego():
 
         pokemonUser = Pokemon(0,0,0,0,0,0,0)
         self.comprobaciondañoUser() #se comprueba si es debil o resistente
-        daño = pokemonUser.CalcDaño(ataqueElegido[1],self.getPokemon_user()[3],self.getPokemon_pc()[4]) * self.comprobaciondañoUser
+        daño = pokemonUser.CalcDaño(ataqueElegido[2],self.getPokemon_user()[3],self.getPokemon_pc()[4]) * self.comprobaciondañoUser
         #calcula el daño con los parametros de potencia del movimiento, ataque del pokemon y defensa del pokemon contrario
 
         aleatorio_precision = random.random() # crea un numero de 0 a 1
-        if aleatorio_precision <= ataqueElegido[2]: #se simula el porcentaje de precicion del movimiento 
+        if aleatorio_precision <= ataqueElegido[3]: #se simula el porcentaje de precicion del movimiento 
             vida = self.getVidaPokemon_pc()
             self.setVidaPokemon_pc(vida - daño) #se actualiza la vida del pokemon enemigo restando el daño calculado
-            self.MovimientosPokemonUser[ataque][3] -= 1 # le resta 1 al pp del movimiento
+            self.MovimientosPokemonUser[ataque][4] -= 1 # le resta 1 al pp del movimiento
             
         else:
             return(self._pokemon_user[0] + "ha fallado el ataque")
         
         
-    def turnoUsuario(self,intencion,ataque,objeto,movimiento): #intencion = 0 si quiere usar objeto y si quiere realizar ataque = 1 y ataque posicion del movimiento
+    def turnoUsuario(self,intencion,ataque, movimientoObjeto): #intencion = 0 si quiere usar objeto y si quiere realizar ataque = 1 y ataque posicion del movimiento
         if(intencion == 0):
-            self.UsarObjetoUsuario(objeto,movimiento)
+            self.setObjetoelegido() #ObjetoElegido debe ser un string con el Nombre del objeto
+            self.UsarObjetoUsuario(self.objetoElegido, movimientoObjeto) #movimiento debe ser un numero de 0 al 3 / 
         else:
             self.realizarAtaqueUsuario(ataque)
         
@@ -164,14 +168,14 @@ class Juego():
 
         pokemonPc = Pokemon(0,0,0,0,0,0,0)
         self.comprobaciondañoPc()
-        daño = pokemonPc.CalcDaño(ataqueElegido[1],self.getPokemon_pc()[3],self.getPokemon_user()[4]) * self.comprobaciondañoPc
+        daño = pokemonPc.CalcDaño(ataqueElegido[2],self.getPokemon_pc()[3],self.getPokemon_user()[4]) * self.comprobaciondañoPc
         #calcula el daño con los parametros de potencia del movimiento, ataque del pokemon y defensa del pokemon contrario
 
         aleatorio_precision = random.random() # crea un numero de 0 a 1
-        if aleatorio_precision <= ataqueElegido[2]: #se simula el porcentaje de precicion del movimiento 
+        if aleatorio_precision <= ataqueElegido[3]: #se simula el porcentaje de precicion del movimiento 
             vida = self.getVidaPokemon_user()
             self.setVidaPokemon_user(vida - daño) #se actualiza la vida del pokemon enemigo restando el daño calculado
-            self.MovimientosPokemonPc[ataque][3] -= 1 # le resta 1 al pp del movimiento
+            self.MovimientosPokemonPc[ataque][4] -= 1 # le resta 1 al pp del movimiento
             
         else:
             return(self._pokemon_user[0] + "ha fallado el ataque")
@@ -188,11 +192,11 @@ class Juego():
             self.realizarAtaquePc()
                     
         
-    def batalla(self, i, intencion, ataque,objeto,movimiento): #se pasa en cada turno la intencion del usuario y el ataque elegido por el usuario, si el usuario elige un objeto se le pasa el objeto y el movimiento si quiere aumentar el pp
+    def batalla(self, i, intencion, ataque, movimientoObjeto): #se pasa en cada turno la intencion del usuario y el ataque elegido por el usuario
         if i % 2 == 0:
             self.turnoPc()
         else:
-            self.turnoUsuario(intencion, ataque, objeto, movimiento)
+            self.turnoUsuario(intencion, ataque, movimientoObjeto) #intencion=0 si se usa objeto, =1 si es ataque / ataque es igual al movimiento escogido (0-3)
 
         if self.getVidaPokemon_user() <= 0:
             print("Has perdido")
@@ -303,8 +307,8 @@ class Juego():
     def setIntencion(self,intencion):
         self.intencion = intencion
 
-    def setObjetoElegido(self):
+    def getObjetoElegido(self):
         return self.objetoElegido
     
-    def getObjetoelegido(self,objeto):
+    def setObjetoelegido(self,objeto):
         self.objetoElegido = objeto
