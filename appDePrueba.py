@@ -16,6 +16,6 @@ print(Juego().movimientosPokemonUser[0][4])
 
 print(Juego().AumentarPpMovimiento('User',-1))
 
-#print(Juego().batalla())
+print(Juego().batalla(0, 0, 'BolaLodo'))
 print(Juego().UsarObjetoUsuario("Eter"))
 print(Juego().getVidaPokemon_user())
