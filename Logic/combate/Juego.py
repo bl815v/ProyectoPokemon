@@ -2,6 +2,7 @@ from Logic.Pokemon.DiccionarioPokemon import DiccionarioPokemon
 from Logic.Pokemon.PokemonBase import Pokemon
 from Logic.Pokemon.DiccionarioObjetos import DiccionarioObjetos 
 from Logic.Movimientos.ListaMovimiento import ListaMovimiento 
+from Logic.basesDeDatos.Admin_base import Baseusuarios
 
 import random
 
@@ -192,7 +193,7 @@ class Juego():
             self.realizarAtaquePc()
                     
         
-    def batalla(self, i, intencion, ataque, movimientoObjeto): #se pasa en cada turno la intencion del usuario y el ataque elegido por el usuario
+    def batalla(self, i, intencion, ataque, movimientoObjeto, user): #se pasa en cada turno la intencion del usuario y el ataque elegido por el usuario
         if i % 2 == 0:
             self.turnoPc()
         else:
@@ -200,8 +201,11 @@ class Juego():
 
         if self.getVidaPokemon_user() <= 0:
             print("Has perdido")
+            Baseusuarios().aumentarPartidasPerdidas(user)
+
         elif self.getVidaPokemon_pc() <= 0:
             print("Has ganado")
+            Baseusuarios().aumentarPartidasGanadas(user)
                 
 
 
