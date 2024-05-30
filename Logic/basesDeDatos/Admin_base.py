@@ -5,8 +5,8 @@ class Baseusuarios:
 
     def guardarUsuario(self, usuario, contraseña, nombre): #guarda la contraseña, usuario y nombre ne la base de datos
         cursor = self.db.connection.cursor()
-        cursor.execute("INSERT INTO usuarios (usuario, contraseña, nombre) VALUES ( %s, %s, %s)",
-                    (usuario, contraseña, nombre))
+        cursor.execute("INSERT INTO usuarios (nombre, usuario, contraseña) VALUES ( %s, %s, %s)",
+                    (nombre, usuario, contraseña))
         self.db.connection.commit()
         cursor.close()    
 
