@@ -55,7 +55,25 @@ class Juego():
         self.MovimientosPokemonPc = ListaMovimiento().IdentifMovsPokemon(self._pokemon_pc[0])
         self.MovimientosPokemonUser = ListaMovimiento().IdentifMovsPokemon(self._pokemon_user[0])
 
+    def debilidadResistenciaPc(self):
+        self.comprobaciondañoPc = 1
+        for elemento in self._pokemon_user[5]: #si el tipo de pokemon esta en las debilidades el daño se multiplicara por dos
+            if elemento == self._pokemon_pc[1]:
+                self.comprobaciondañoPc = 2
 
+        for elemento in self._pokemon_user[6]: #si el tipo de pokemon esta en las fortalezas el daño se reduce a la mitad
+            if elemento == self._pokemon_pc[1]:
+                self.comprobaciondañoPc = 0.5 
+        
+    def debilidadResistenciaUser(self):
+        self.comprobaciondañoUser = 1
+        for elemento in self._pokemon_pc[5]: 
+            if elemento == self._pokemon_user[1]:
+                self.comprobaciondañoUser = 2
+
+        for elemento in self._pokemon_pc[6]:
+            if elemento == self._pokemon_user[1]:
+                self.comprobaciondañoUser = 0.5
 
     def AumentarPpMovimiento(self, movimiento,aumento):
         movimiento[3] += aumento #aumenta el pp al movimiento
@@ -118,7 +136,8 @@ class Juego():
             #si el ataque no esta disponible no pude avanzar la ejecucion del programa
              
         pokemonUser = Pokemon()
-        daño = pokemonUser.CalcDaño(ataqueElegido[1],self.getPokemon_user()[3],self.getPokemon_pc()[4])
+        self.comprobaciondañoUser() #se comprueba si es debil o resistente
+        daño = pokemonUser.CalcDaño(ataqueElegido[1],self.getPokemon_user()[3],self.getPokemon_pc()[4]) * self.comprobaciondañoUser
         #calcula el daño con los parametros de potencia del movimiento, ataque del pokemon y defensa del pokemon contrario
 
         aleatorio_precision = random.random() # crea un numero de 0 a 1
@@ -150,7 +169,8 @@ class Juego():
 
           
         pokemonPc = Pokemon()
-        daño = pokemonPc.CalcDaño(ataqueElegido[1],self.getPokemon_pc()[3],self.getPokemon_user()[4])
+        self.comprobaciondañoPc()
+        daño = pokemonPc.CalcDaño(ataqueElegido[1],self.getPokemon_pc()[3],self.getPokemon_user()[4]) * self.comprobaciondañoPc
         #calcula el daño con los parametros de potencia del movimiento, ataque del pokemon y defensa del pokemon contrario
 
         aleatorio_precision = random.random() # crea un numero de 0 a 1
