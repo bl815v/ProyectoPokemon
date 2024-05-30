@@ -61,10 +61,11 @@ class Juego():
         movimiento[3] += aumento #aumenta el pp al movimiento
 
 
-    def UsarObjetoUsuario(self,objeto):
+    def UsarObjetoUsuario(self,objeto,movimiento): #movimiento si quiere aumentar el pp de un movimiento si no sera 0 
         objetoElegido = self.diccionario.DiccionarioDeObjetos(objeto,"Todo")
         while(objetoElegido[5] == 0): #hace que no se pudean elegir objetos agotados
             return("El objeto elegido no tiene puntos disponibles, elige un objeto diferente") 
+        
         posicion = self.diccionario.IdentificarObjeto(objetoElegido) #se le pasa el nombre del objeto que eligio el usuario    
         self.objeto = self.objetosUser[posicion]
         self.objetosUser[posicion][5] -= 1 #resta en uno a la cantidad del objeto elegido
@@ -74,13 +75,21 @@ class Juego():
         else:
              self.setVidaPokemon_user(self.vidaTotalUser)
 
-        self.AumentarPpMovimiento(["ejemplo",40,50,3,"ag"],self.objeto[2]) #aumenta el pp de un movimiento
-        self.setAtaquePokemon_user(self.getAtaquePokemon_user() + self.objeto[3]) #aumenta el ataque del pokemon
-        self.setDefensaPokemon_user(self.getDefensaPokemon_user() + self.objeto[4]) #aumenta la defensa del pokemon
+        self.AumentarPpMovimiento(self.movimientosPokemonUser[movimiento],self.objeto[2]) #aumenta el pp de un movimiento
+
+        if(self.objeto[3] > 0): 
+            self.setAtaquePokemon_user(self.getAtaquePokemon_user() + self.objeto[3]) #aumenta el ataque del pokemon
+        else:
+            self.setAtaquepokemon_pc(self.getAtaquePokemon_pc() + self.objeto[3]) #si es negativo resta el ataque del enemigo
+        if(self.objeto[4] > 0):
+            self.setDefensaPokemon_user(self.getDefensaPokemon_user() + self.objeto[4]) #aumenta la defensa del pokemon
+        else:
+            self.setDefensaPokemon_pc(self.getDefensaPokemon_pc() + self.objeto[4])
         return(self._pokemon_user[0] + "ha usado" + self.objeto[0])
 
 
-    def UsarObjetoPc(self):       
+    def UsarObjetoPc(self):  
+        movimiento =  random.randint(0,3) #elige un movimiento aleatorio para aumentarle el pp
         objetoAleatorio = random.randint(0,5)
         self.objeto = self.objetosPc[objetoAleatorio]
         self.objetosPc[objetoAleatorio][5] -= 1 
@@ -89,9 +98,16 @@ class Juego():
         else:
              self.setVidaPokemon_pc(self.vidaTotalPc)
 
-        self.AumentarPpMovimiento(["ejemplo",40,50,3,"ag"],self.objeto[2])
-        self.setAtaquepokemon_pc(self.getAtaquePokemon_pc() + self.objeto[3])
-        self.setDefensaPokemon_pc(self.getDefensaPokemon_pc() + self.objeto[4])
+        self.AumentarPpMovimiento(self.movimientosPokemonPc[movimiento],self.objeto[2])
+
+        if(self.objeto[3] > 0):
+            self.setAtaquepokemon_pc(self.getAtaquePokemon_pc() + self.objeto[3])
+        else:
+            self.setAtaquePokemon_user(self.getAtaquePokemon_user() + self.objeto[3])
+        if(self.objeto[4] > 0):
+            self.setDefensaPokemon_pc(self.getDefensaPokemon_pc() + self.objeto[4])
+        else:
+            self.setDefensaPokemon_user(self.getDefensaPokemon_user() + self.objeto[4])
         return(self._pokemon_pc[0] + "ha usado" + self.objeto[0])
 
 
