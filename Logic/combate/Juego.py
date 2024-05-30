@@ -146,9 +146,9 @@ class Juego():
             return(self._pokemon_user[0] + "ha fallado el ataque")
         
         
-    def turnoUsuario(self,intencion,ataque): #intencion = 0 si quiere usar objeto y si quiere realizar ataque = 1 y ataque posicion del movimiento
+    def turnoUsuario(self,intencion,ataque,objeto,movimiento): #intencion = 0 si quiere usar objeto y si quiere realizar ataque = 1 y ataque posicion del movimiento
         if(intencion == 0):
-            self.UsarObjetoUsuario(self.objetoElegido)
+            self.UsarObjetoUsuario(objeto,movimiento)
         else:
             self.realizarAtaqueUsuario(ataque)
         
@@ -188,11 +188,11 @@ class Juego():
             self.realizarAtaquePc()
                     
         
-    def batalla(self, i, intencion, ataque): #se pasa en cada turno la intencion del usuario y el ataque elegido por el usuario
+    def batalla(self, i, intencion, ataque,objeto,movimiento): #se pasa en cada turno la intencion del usuario y el ataque elegido por el usuario, si el usuario elige un objeto se le pasa el objeto y el movimiento si quiere aumentar el pp
         if i % 2 == 0:
             self.turnoPc()
         else:
-            self.turnoUsuario(intencion, ataque)
+            self.turnoUsuario(intencion, ataque, objeto, movimiento)
 
         if self.getVidaPokemon_user() <= 0:
             print("Has perdido")
