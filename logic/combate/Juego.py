@@ -1,12 +1,21 @@
-from Logic.Pokemon.DiccionarioPokemon import DiccionarioPokemon
-from Logic.Pokemon.PokemonBase import Pokemon
-from Logic.Pokemon.DiccionarioObjetos import DiccionarioObjetos 
-from Logic.Movimientos.ListaMovimiento import ListaMovimiento 
+from logic.pokemon.DiccionarioPokemon import DiccionarioPokemon
+from logic.pokemon.PokemonBase import Pokemon
+from logic.pokemon.DiccionarioObjetos import DiccionarioObjetos 
+from logic.movimientos.ListaMovimiento import ListaMovimiento 
 
 import random
 
 class Juego():
     
+    """Clase que se encarga de realizar la logica del combate pokemon.
+     
+    Attributes:
+        diccionario: Objeto que representa el diccionario de objetos que se puden usar.
+        objetosUser: Representa la lista de objetos disponibles del usuario.
+        objetosPc: Representa la lista de objetos disponibles del pc.
+        pokemon_pc: Lista con los atributos del pokemon del pc.
+        pokemon_user: Lista con los atributos del pokemon del usuario.
+       """
     def __init__(self):
         self.diccionario = DiccionarioObjetos()
         self.objetosUser = [self.diccionario.DiccionarioDeObjetos("BolaLodo","Todo"),
@@ -14,19 +23,16 @@ class Juego():
                             self.diccionario.DiccionarioDeObjetos("Hierro","Todo"),
                             self.diccionario.DiccionarioDeObjetos("HuesoRaro","Todo"),
                             self.diccionario.DiccionarioDeObjetos("Pocion","Todo"),
-                            self.diccionario.DiccionarioDeObjetos("Proteina","Todo")] #se crean los objetos del usuario
+                            self.diccionario.DiccionarioDeObjetos("Proteina","Todo")] 
         self.objetosPc = [self.diccionario.DiccionarioDeObjetos("BolaLodo","Todo"),
                             self.diccionario.DiccionarioDeObjetos("Eter","Todo"),
                             self.diccionario.DiccionarioDeObjetos("Hierro","Todo"),
                             self.diccionario.DiccionarioDeObjetos("HuesoRaro","Todo"),
                             self.diccionario.DiccionarioDeObjetos("Pocion","Todo"),
-                            self.diccionario.DiccionarioDeObjetos("Proteina","Todo")] #se crean los objetos del pc
+                            self.diccionario.DiccionarioDeObjetos("Proteina","Todo")] 
         
 
     def elegirPokemones(self, numero1, numero2):
-        #numero1 = 1 #random.randint(0, 11) #genera un numero aleatorio del 0 al 11
-        
-        #numero2 = 2 #random.randint(0, 11)
         
         diccionario = DiccionarioPokemon.getPokemones()
 
