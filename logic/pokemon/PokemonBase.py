@@ -53,7 +53,7 @@ class Pokemon(ABC):
     def setResistencia(self,resistencia):
         self._resistencia = resistencia  
 
-    def CalcDaño(self, potenciaAtaque, ataquePropio, defensaRival):
+    def CalcDano(self, potenciaAtaque, ataquePropio, defensaRival):
         numero_aleatorio = random.uniform(0.85, 1.0)
         resultado = (((((2*50)/5)+2 * potenciaAtaque * (ataquePropio/defensaRival)) / 50) + 2)
         return resultado * numero_aleatorio
