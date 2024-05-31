@@ -24,7 +24,7 @@ class Admin_base:
             correo (String): Correo del usuario.
         """
         cursor = self.db.connection.cursor()
-        cursor.execute("INSERT INTO usuarios (nombre, usuario, contraseña) VALUES ( %s, %s, %s)",
+        cursor.execute("INSERT INTO usuarios (correo, usuario, contraseña) VALUES ( %s, %s, %s)",
                     (correo, usuario, contrasena))
         self.db.connection.commit()
         cursor.close()    
