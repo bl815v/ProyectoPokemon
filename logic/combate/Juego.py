@@ -1,5 +1,5 @@
 from logic.pokemon.DiccionarioPokemon import DiccionarioPokemon
-from logic.pokemon.PokemonBase import Pokemon
+from logic.pokemon.PokemonBase import PokemonBase
 from logic.pokemon.DiccionarioObjetos import DiccionarioObjetos 
 from logic.movimientos.ListaMovimiento import ListaMovimiento 
 
@@ -61,7 +61,7 @@ class Juego():
             numero2 (Int): numero aleatorio para definir el pokemon del usuario.
 
         """
-        diccionario = DiccionarioPokemon.getPokemones()
+        diccionario = DiccionarioPokemon.getPokemones(self)
 
         self._pokemon_pc = diccionario[numero1]
         self._pokemon_user = diccionario[numero2]
@@ -233,7 +233,7 @@ class Juego():
         while(ataqueElegido[4] == 0):
             return("El ataque elegido no tiene puntos disponibles, elige un ataque diferente") 
 
-        pokemonUser = Pokemon(0,0,0,0,0,0,0)
+        pokemonUser = PokemonBase(0,0,0,0,0,0,0)
         Juego.debilidadResistenciaUser(self)  
         dano = pokemonUser.CalcDano(ataqueElegido[2],self.getPokemon_user()[3],self.getPokemon_pc()[4]) * self.comprobaciondanoUser
 
@@ -275,7 +275,7 @@ class Juego():
             #si el ataque no esta disponible no pude avanzar la ejecucion del programa
 
 
-        pokemonPc = Pokemon(0,0,0,0,0,0,0)
+        pokemonPc = PokemonBase(0,0,0,0,0,0,0)
         Juego.debilidadResistenciaPc(self)  #se comprueba si es debil o resistente
         dano = pokemonPc.CalcDano(ataqueElegido[2],self.getPokemon_pc()[3],self.getPokemon_user()[4]) * self.comprobaciondanoPc
         #calcula el daño con los parametros de potencia del movimiento, ataque del pokemon y defensa del pokemon contrario
