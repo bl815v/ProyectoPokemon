@@ -23,13 +23,13 @@ class Juego():
                             self.diccionario.DiccionarioDeObjetos("Proteina","Todo")] #se crean los objetos del pc
         
 
-    def elegirPokemones(self):
-        numero1 = random.randint(0, 11) #genera un numero aleatorio del 0 al 11
+    def elegirPokemones(self, numero1, numero2):
+        #numero1 = 1 #random.randint(0, 11) #genera un numero aleatorio del 0 al 11
         
-        numero2 = random.randint(0, 11)
+        #numero2 = 2 #random.randint(0, 11)
         
         diccionario = DiccionarioPokemon.getPokemones()
-        
+
         self._pokemon_pc = diccionario[numero1]
         self._pokemon_user = diccionario[numero2]
 
