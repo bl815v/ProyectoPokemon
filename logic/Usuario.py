@@ -1,25 +1,26 @@
 class Usuario():
     """Clase que se encarga de la logica de usuario para la base de datos.
     Args:
-            correo: correo del usuario.
-            user: nombre de usuario.
-            contraseña: contraseña del susuario.
-    Attributes:
         correo: correo del usuario.
         user: nombre de usuario.
         contraseña: contraseña del susuario.
     
+    Attributes:
+        correo: correo del usuario.
+        user: nombre de usuario.
+        contrasena: contraseña del susuario.
+    
        """
-    def __init__(self, correo, user, contraseña):
+    def __init__(self, correo, user, contrasena):
         """Inicializa la clase usuario.
         Args:
             correo: correo del usuario.
             user: nombre de usuario.
-            contraseña: contraseña del susuario.
+            contrasena: contraseña del susuario.
         """
         self.correo = correo
         self.usuario = user
-        self.contraseña = contraseña
+        self.contrasena = contrasena
 
     def setCorreo(self,correo):
         """Define el correo del usuario.
@@ -51,12 +52,12 @@ class Usuario():
         """
         return self.usuario
     
-    def setContraseña(self,contraseña):
+    def setContrasena(self,contrasena):
         """Define la contraseña del usuario.
         Args:
-            contraseña (String): contraseña del usuario.
+            contrasena (String): contraseña del usuario.
         """
-        self.contraseña = contraseña
+        self.contrasena = contrasena
 
     def getContraseña(self):
         """Obtiene la contraseña del usuario.
@@ -64,4 +65,4 @@ class Usuario():
         Returns:
             contraseña del usuario.
         """
-        return self.contraseña
+        return self.contrasena

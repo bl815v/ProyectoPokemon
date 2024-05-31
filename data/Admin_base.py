@@ -3,16 +3,16 @@ class Admin_base:
     """Clase que se encarga de guardar o consultar datos de la base de datos.
      
     Args:
-        db: Objeto que representa la conexiona a la base de datos.
+        db: Objeto que representa la conexion a la base de datos.
 
     Attributes:
-        db: Objeto que representa la conexiona a la base de datos.
+        db: Objeto que representa la conexion a la base de datos.
     
        """
     def __init__(self, db):
         """Inicializa Admin_base con la conexion a la base de datos.
         Args:
-            db: Objeto que representa la conexiona a la base de datos.
+            db: Objeto que representa la conexion a la base de datos.
         """
         self.db = db
     
@@ -24,7 +24,7 @@ class Admin_base:
             correo (String): Correo del usuario.
         """
         cursor = self.db.connection.cursor()
-        cursor.execute("INSERT INTO usuarios (correo, usuario, contraseña) VALUES ( %s, %s, %s)",
+        cursor.execute("INSERT INTO usuarios (correo, usuario, contrasena) VALUES ( %s, %s, %s)",
                     (correo, usuario, contrasena))
         self.db.connection.commit()
         cursor.close()    
@@ -39,7 +39,7 @@ class Admin_base:
             True or False: bool True si el usuario coincide con la contraseña, False si no coinciden.
         """
         cur = self.db.connection.cursor()
-        cur.execute("SELECT * FROM usuarios WHERE usuario = %s AND contraseña = %s", (user, contrasena))
+        cur.execute("SELECT * FROM usuarios WHERE usuario = %s AND contrasena = %s", (user, contrasena))
         usuario = cur.fetchone()
         cur.close()
         return True if usuario else False
