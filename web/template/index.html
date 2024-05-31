@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">    
+    <title>Batallas Pokemon: Inicia sesión para continuar</title>
+    <link rel="icon" href="{{url_for('favicon')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{url_for('favicon')}}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/indexSt.css')}}">
+    <script src="{{ url_for('static', filename='js/indexJs.js') }}"></script>
+    <style>
+        :root {
+            --background-url: url('{{ background_url }}');
+        }
+    </style>
+</head>
+<body>
+    <form class="formulario" method="post" action="/registro">
+        <div class="div_principal">
+            <div class="div_contenido">
+                <div class="div_titulo">
+                    <h1>Batallas Pokemon</h1>
+                </div>
+                <div class="div_usuario">
+                    <label for="input_user">Usuario</label><br>
+                    <input type="text" id="input_user" name="input_user" placeholder="Ingresa tu nombre de usuario" required>
+                </div>
+                <div class="div_clave">
+                    <label for="input_clave">Contraseña</label><br>
+                    <input type="password" id="input_clave" name="input_clave" placeholder="Ingresa tu contraseña" required>
+                </div>
+                <div class="div_entrar">
+                    <button type="submit" id="boton_entrar" name="boton_entrar">Entrar</button>
+                </div>
+                <div class="div_registrarse">
+                    <p>¿No tienes una cuenta? <a href="{{url_for('registro')}}">Regístrate</a></p>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

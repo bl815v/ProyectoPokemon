@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">    
+    <title>Batallas Pokemon: ¡Has ganado!</title>
+    <link rel="icon" href="{{url_for('favicon')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{url_for('favicon')}}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/ganasteSt.css')}}">
+    <script src="{{ url_for('static', filename='js/ganasteJs.js') }}"></script>
+    <style>
+        :root {
+            --background-url: url('{{ background_url }}');
+        }
+    </style>
+</head>
+<body>
+    <div class="div_principal">
+        <h3>¡Felicidades, ganaste!</h3>
+        <div class="div_botones">
+            <button type="button" id="boton_regresar" name="boton_regresar">Regresar</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">    
+    <title>Batallas Pokemon: Batalla en curso</title>
+    <link rel="icon" href="{{url_for('favicon')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{url_for('favicon')}}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/batallaSt.css')}}">
+    <script src="{{ url_for('static', filename='js/batallaJs.js') }}"></script>
+    <style>
+        :root {
+            --background-url: url('{{ background_url }}');
+        }
+    </style>
+</head>
+<body>  
+    <div class="div_principal">
+        <div class="div_nombreRival">
+            <div class="div_div_nombreRival">
+                <p>NOMBRE POKEMON</p>
+                <p>VIDA POKEMON</p>    
+            </div>
+        </div>
+        <div class="div_pokemonRival">
+            <img id="pokemonRival-gif" src="{{ url_for('static', filename='pokemon/Bulbasaur.gif') }}" alt="POKEMON">    
+        </div>
+        <div class="div_pokemonAliado">
+            <img id="pokemonAliado-gif" src="{{ url_for('static', filename='pokemon/Bulbasaur.gif') }}" alt="POKEMON">    
+        </div>
+        <div class="div_nombreAliado">
+            <div class="div_div_nombreAliado">
+                <p>NOMBRE POKEMON</p>
+                <p>VIDA POKEMON</p>    
+            </div>
+        </div>
+        <button type="button" id="boton_atacar" name="boton_regresar">Atacar</button>
+        <button type="button" id="boton_mochila" name="boton_regresar">Mochila</button>
+    </div>
+</body>
+</html>

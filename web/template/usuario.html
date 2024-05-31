@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">    
+    <title>Batallas Pokemon: ¡A jugar!</title>
+    <link rel="icon" href="{{url_for('favicon')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{url_for('favicon')}}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/usuarioSt.css')}}">
+    <script src="{{ url_for('static', filename='js/usuarioJs.js') }}"></script>
+    <style>
+        :root {
+            --background-url: url('{{ background_url }}');
+        }
+    </style>
+</head>
+<body>
+    <div class="div_principal">
+        <div class="div_titulo">
+            <h1>Batallas Pokemon</h1>
+        </div>
+        <div class="div_izquierdo">
+            <h3>¡Hola, USUARIO!</h3>
+            <div class="div_datos">
+                <p>Partidas ganadas: </p>
+                <p>Partidas totales: </p>
+                <p>Objetos usados: </p>
+                <p>Ataques realizados: </p>    
+            </div>
+        </div>
+        <div class="div_botones">
+            <button type="button" id="boton_combatir" name="boton_combatir">Combatir</button>
+            <div class="div_salir">
+                <button type="button" id="boton_salir" name="boton_salir">Salir</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
