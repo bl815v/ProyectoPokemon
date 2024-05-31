@@ -1,11 +1,13 @@
 class Usuario():
     """Clase que se encarga de la logica de usuario para la base de datos.
-     
     Args:
-        db: Objeto que representa la conexiona a la base de datos.
-
+            correo: correo del usuario.
+            user: nombre de usuario.
+            contraseña: contraseña del susuario.
     Attributes:
-        db: Objeto que representa la conexiona a la base de datos.
+        correo: correo del usuario.
+        user: nombre de usuario.
+        contraseña: contraseña del susuario.
     
        """
     def __init__(self, correo, user, contraseña):
