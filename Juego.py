@@ -21,19 +21,17 @@ class Juego():
                             self.diccionario.DiccionarioDeObjetos("HuesoRaro","Todo"),
                             self.diccionario.DiccionarioDeObjetos("Pocion","Todo"),
                             self.diccionario.DiccionarioDeObjetos("Proteina","Todo")] #se crean los objetos del pc
-        Juego.elegirPokemones(self)
+        
 
     def elegirPokemones(self):
         numero1 = random.randint(0, 11) #genera un numero aleatorio del 0 al 11
         
-        while(True):
-            numero2 = random.randint(0, 11)
-            if numero2 != numero1:  #genera un numero aleatorio y garantiza que no sea el mismo que el otro numero generado
-                break
+        numero2 = random.randint(0, 11)
         
-        diccionario = DiccionarioPokemon()
-        self._pokemon_pc= diccionario.getPokemones()[numero1]
-        self._pokemon_user=diccionario.getPokemones()[numero2]
+        diccionario = DiccionarioPokemon.getPokemones()
+        
+        self._pokemon_pc = diccionario[numero1]
+        self._pokemon_user = diccionario[numero2]
 
         self.vidaPokemonPc = self._pokemon_pc[2]
         self.vidaTotalPc =  DiccionarioPokemon.DiccionarioDePokemon(self, self._pokemon_pc[0], 'Vida')#se define vida total para asegurar que los objetos no pongan mas vida que la maxima posible
@@ -51,8 +49,8 @@ class Juego():
         self.ataquePokemonUser = self._pokemon_user[3]
         self.defensaPokemonUser = self._pokemon_user[4]
         self.tipoPokemonUser = self._pokemon_user[1]
-        self.debilidadPokemonUser = self._pokemon_pc[5]
-        self.resistenciaPokemonUser = self._pokemon_pc[6]
+        self.debilidadPokemonUser = self._pokemon_user[5]
+        self.resistenciaPokemonUser = self._pokemon_user[6]
         self.movimientosPokemonUser = ListaMovimiento.IdentifMovsPokemon(self, self._pokemon_user[0])
         self.movimientosPPMaximosUser = (self.movimientosPokemonUser[0][4], self.movimientosPokemonUser[1][4],
                                         self.movimientosPokemonUser[2][4], self.movimientosPokemonUser[3][4])
@@ -236,12 +234,15 @@ class Juego():
             self.turnoPc()
         else:
             self.turnoUsuario(intencion, accion) #intencion=0 si se usa objeto, =1 si es ataque / ataque es igual al movimiento escogido (0-3)
-
+        
         if self.getVidaPokemon_user() <= 0:
-            print("Has perdido")
+            print("\nHas perdido")
+            return 1
         elif self.getVidaPokemon_pc() <= 0:
-            print("Has ganado")
+            print("\nHas ganado")
+            return 1
                 
+        return 0
 
 
     def getPokemon_pc(self):
